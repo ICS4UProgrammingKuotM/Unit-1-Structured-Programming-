@@ -1,10 +1,10 @@
-package hello_world;
+package Hello_World;
 
-public class Hello_World {
+public class hello_world {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hello World");
+		System.out.println("Hello" + " " + "World" + "!");
 	}
 
 }
