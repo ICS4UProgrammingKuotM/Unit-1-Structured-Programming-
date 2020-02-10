@@ -1,5 +1,6 @@
 package logging_company;
 
+import java.util.Scanner;
 public class Logging_Company {
 	
 	/*
@@ -10,38 +11,40 @@ public class Logging_Company {
 	 * Logging Company
 	*/
 	
-	public static final class ConstantMass {
-		public static final float Max_Carry_Weight = 1100f;	
+
+	
+	 static final class ConstantMass {
+		public final float Max_Carry_Weight = 1100f;	
 		
 	}
 	
-	public static final float Log ("Log_Length") {
+	  static final class Log {
 		public final float Log_Length1 = 0.25f;
 		public final float Log_Length2 = 0.5f;
 		public final float Log_Length3 = 1f;
+		public final float Length[] = {Log_Length1,Log_Length2,Log_Length3};
+		
+	}
 			
-	}
-	
-	public static final class Price {
-		
-		public static final float Length1_Price = 25f;
-		public static final float Length2_Price = 50f; 
-		public static final float Length3_Price = 100f;
-		
-		
-	}
 	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		float Log_Length = Log.getLog(float);
+		Log Log = new Log();
+		float Log_Length[] = Log.Length;
+		ConstantMass ConstantMass = new ConstantMass();
 		float Max_Weight = ConstantMass.Max_Carry_Weight;
-		float Price_Length = new
-		float Total_Price = 
+		Scanner input = new Scanner(System.in);
+		float Log_Weight;
+		float Num_Of_Logs = Max_Weight;
 		
-		float Log_Weight = 20 * Log_Length;
-		float Num_Of_Logs = Max_Weight / Log_Weight;
+		System.out.println("What is the length of the log?" + "\n1: 0.25\n2: 0.5\n3: 1");
+		float userInput = input.nextFloat();
+			if (Log_Length. == userInput) {
+				System.out.println("Is the length you entered: " + userInput + "?");
+			}
 		
+			
 	}
 
 }
