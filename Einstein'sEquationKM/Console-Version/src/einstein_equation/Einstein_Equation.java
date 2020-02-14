@@ -54,7 +54,7 @@ public class Einstein_Equation {
 		/*
 		 * This displays a string that asks the user if they want to do another calculation 
 		 */
-		System.out.println("Would you like to do another calculation?\nYes\nNo");
+		System.out.println("\nWould you like to do another calculation?\nYes\nNo");
 		
 		/*
 		 *  This allows the user to input data as a string then assigns it to the answerInput variable
