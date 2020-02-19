@@ -26,8 +26,18 @@ public class SimpleCalculator {
 	*/
 	
 	private JFrame frmSimpleCalculator;
-	private JTextField txtUserNum1;
-	private JTextField txtUserNum2;
+	public static JTextField txtUserNum1;
+	public static JTextField txtUserNum2;
+	private static JLabel lblAnswer;
+	private static JButton btnAdd;
+	private static JButton btnSubtract;
+	private static JButton btnMultiply;
+	private static JButton btnDivide;
+	public static String userNumber = "";
+	public static String userNumber2 = "";
+	public static double answer = 0;
+	public static int num1 = 0;
+	public static int num2 = 0;
 
 	/**
 	 * Launch the application.
@@ -44,29 +54,8 @@ public class SimpleCalculator {
 			}
 		});
 		
-		
-		double answer = 0;
-		
-		int num1 = 0;
-		int num2 = 0;
-		
-		answer = num1 + num2;
-		answer = num1 - num2;
-		answer = num1 * num2;
-		answer = num1 / num2;
-		
-		
-		
-		
 	}
-	  public void actionPerformed(ActionEvent e) {
-		  
-		  
-		  
-		  num1 = Integer.parseInt(txtUserNum1.getText());
-		  num2 = Integer.parseInt(txtUserNum2.getText());
-	  }
-	    
+	
 	
 
 	/**
@@ -97,31 +86,68 @@ public class SimpleCalculator {
 		frmSimpleCalculator.getContentPane().add(txtUserNum1);
 		txtUserNum1.setColumns(10);
 		
-		JButton btnAdd = new JButton("+");
+		btnAdd = new JButton("+");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				userNumber = txtUserNum1.getText();
+				num1 = Integer.parseInt(userNumber);
+				userNumber2 = txtUserNum2.getText();
+				num2 = Integer.parseInt(userNumber2);
+				answer = num1 + num2;
+				lblAnswer.setText("The answer is: " + answer);
+			}
+		});
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnAdd.setBounds(10, 174, 52, 43);
 		frmSimpleCalculator.getContentPane().add(btnAdd);
 		
-		JButton btnSubtract = new JButton("-");
+		btnSubtract = new JButton("-");
+		btnSubtract.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				userNumber = txtUserNum1.getText();
+				num1 = Integer.parseInt(userNumber);
+				userNumber2 = txtUserNum2.getText();
+				num2 = Integer.parseInt(userNumber2);
+				answer = num1 - num2;
+				lblAnswer.setText("The answer is: " + answer);
+				
+			}
+		});
 		btnSubtract.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnSubtract.setBounds(72, 174, 52, 43);
 		frmSimpleCalculator.getContentPane().add(btnSubtract);
 		
-		JButton btnMultiply = new JButton("\u00D7");
+		btnMultiply = new JButton("\u00D7");
+		btnMultiply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				userNumber = txtUserNum1.getText();
+				num1 = Integer.parseInt(userNumber);
+				userNumber2 = txtUserNum2.getText();
+				num2 = Integer.parseInt(userNumber2);
+				answer = num1 * num2;
+				lblAnswer.setText("The answer is: " + answer);
+			}
+		});
 		btnMultiply.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnMultiply.setBounds(132, 174, 52, 43);
 		frmSimpleCalculator.getContentPane().add(btnMultiply);
 		
-		JButton btnDivide = new JButton("\u00F7");
+		btnDivide = new JButton("\u00F7");
 		btnDivide.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				userNumber = txtUserNum1.getText();
+				num1 = Integer.parseInt(userNumber);
+				userNumber2 = txtUserNum2.getText();
+				num2 = Integer.parseInt(userNumber2);
+				answer = num1 / num2;
+				lblAnswer.setText("The answer is: " + answer);
 			}
 		});
 		btnDivide.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnDivide.setBounds(194, 174, 52, 43);
 		frmSimpleCalculator.getContentPane().add(btnDivide);
 		
-		JLabel lblAnswer = new JLabel("The answer is:");
+		lblAnswer = new JLabel("The answer is:");
 		lblAnswer.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblAnswer.setBounds(10, 228, 236, 98);
 		frmSimpleCalculator.getContentPane().add(lblAnswer);
