@@ -36,8 +36,8 @@ public class SimpleCalculator {
 	public static String userNumber = "";
 	public static String userNumber2 = "";
 	public static double answer = 0;
-	public static int num1 = 0;
-	public static int num2 = 0;
+	public static double num1 = 0;
+	public static double num2 = 0;
 
 	/**
 	 * Launch the application.
@@ -89,12 +89,20 @@ public class SimpleCalculator {
 		btnAdd = new JButton("+");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				userNumber = txtUserNum1.getText();
-				num1 = Integer.parseInt(userNumber);
-				userNumber2 = txtUserNum2.getText();
-				num2 = Integer.parseInt(userNumber2);
-				answer = num1 + num2;
-				lblAnswer.setText("The answer is: " + answer);
+				try {
+					userNumber = txtUserNum1.getText();
+					num1 = Double.parseDouble(userNumber);
+
+					userNumber2 = txtUserNum2.getText();
+					num2 = Double.parseDouble(userNumber2);
+					
+					answer = num1 + num2;
+					lblAnswer.setText("The answer is: " + answer);
+					
+				}catch (NumberFormatException e1) {
+					lblAnswer.setText("Please enter a number!");
+				}
+					
 			}
 		});
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -104,12 +112,20 @@ public class SimpleCalculator {
 		btnSubtract = new JButton("-");
 		btnSubtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				userNumber = txtUserNum1.getText();
-				num1 = Integer.parseInt(userNumber);
-				userNumber2 = txtUserNum2.getText();
-				num2 = Integer.parseInt(userNumber2);
-				answer = num1 - num2;
-				lblAnswer.setText("The answer is: " + answer);
+				try {
+					userNumber = txtUserNum1.getText();
+					num1 = Double.parseDouble(userNumber);
+					
+					userNumber2 = txtUserNum2.getText();
+					num2 = Double.parseDouble(userNumber2);
+					
+					answer = num1 - num2;
+					lblAnswer.setText("The answer is: " + answer);
+					
+				}catch (NumberFormatException e1) {
+					lblAnswer.setText("Please enter a number!");
+				}
+			
 				
 			}
 		});
@@ -120,12 +136,20 @@ public class SimpleCalculator {
 		btnMultiply = new JButton("\u00D7");
 		btnMultiply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				userNumber = txtUserNum1.getText();
-				num1 = Integer.parseInt(userNumber);
-				userNumber2 = txtUserNum2.getText();
-				num2 = Integer.parseInt(userNumber2);
-				answer = num1 * num2;
-				lblAnswer.setText("The answer is: " + answer);
+				try {
+					userNumber = txtUserNum1.getText();
+					num1 = Double.parseDouble(userNumber);
+					
+					userNumber2 = txtUserNum2.getText();
+					num2 = Double.parseDouble(userNumber2);
+					
+					answer = num1 * num2;
+					lblAnswer.setText("The answer is: " + answer);
+					
+				}catch (NumberFormatException e1) {
+					lblAnswer.setText("Please enter a number!");
+				}
+				
 			}
 		});
 		btnMultiply.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -135,12 +159,20 @@ public class SimpleCalculator {
 		btnDivide = new JButton("\u00F7");
 		btnDivide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				userNumber = txtUserNum1.getText();
-				num1 = Integer.parseInt(userNumber);
-				userNumber2 = txtUserNum2.getText();
-				num2 = Integer.parseInt(userNumber2);
-				answer = num1 / num2;
-				lblAnswer.setText("The answer is: " + answer);
+				try {
+					userNumber = txtUserNum1.getText();
+					num1 = Double.parseDouble(userNumber);
+					
+					userNumber2 = txtUserNum2.getText();
+					num2 = Double.parseDouble(userNumber2);
+					
+					answer = num1 / num2;
+					lblAnswer.setText("The answer is: " + answer);
+					
+				}catch (NumberFormatException e1) {
+					lblAnswer.setText("Please enter a number!");
+				}
+				
 			}
 		});
 		btnDivide.setFont(new Font("Tahoma", Font.BOLD, 18));
