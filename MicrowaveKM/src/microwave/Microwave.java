@@ -3,19 +3,15 @@ package microwave;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-import javax.swing.Timer;
 
 public class Microwave implements ActionListener{
 
@@ -231,7 +227,7 @@ public class Microwave implements ActionListener{
 		frmMicrowave.getContentPane().add(btnStart);
 		
 		lblTotalTimeANS = new JLabel("");
-		lblTotalTimeANS.setBounds(410, 167, 83, 32);
+		lblTotalTimeANS.setBounds(400, 165, 83, 32);
 		frmMicrowave.getContentPane().add(lblTotalTimeANS);
 		
 		JLabel lblTotalTime = new JLabel("Total Time:");
