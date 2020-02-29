@@ -5,21 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.SwingConstants;
-import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.Scanner;
 
 public class SimpleCalculator {
 	
 	/*
 	 * Created by: Kuot Mariak
-	 * Created on: 10-Feb-2019
+	 * Created on: 10-Feb-2020
 	 * Created for: ICS4U
 	 * Day #6 (Simple Calculator)
 	 * Simple Calculator

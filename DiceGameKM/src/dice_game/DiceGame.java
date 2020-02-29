@@ -9,33 +9,30 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Random;
 
 import javax.swing.SwingConstants;
 
-import org.w3c.dom.ranges.Range;
-
-import javafx.event.ActionEvent;
-
-import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class DiceGame implements ActionListener{
+public class DiceGame {
 
 	private JFrame frmDiceGame;
 	private JTextField txtNum1;
 	private JTextField txtNum2;
-	public	JLabel lblNumOfTimesWrong;
-	public	JLabel lblAnswer;
-	public	JComboBox cboNumGuess;
+	private JTextField txtUserGuess;
+	public JLabel lblNumOfTimesWrong;
+	public JLabel lblAnswer;
 	private JButton btnGenerate;
+	public Random rdm = new Random();
 	
 	
 	public int Num1;
 	public int Num2;
-	public int RandomNumber;
+	public int userNumber;
+	public int WrongCount;
+	public double RandomNumber;
+	
 	
 	/**
 	 * Launch the application.
@@ -60,47 +57,10 @@ public class DiceGame implements ActionListener{
 		initialize();
 	}
 	
-	public int RandomNumGen (int Range1, int Range2) {
-		
-		List<Integer> Range = IntStream.rangeClosed(Range1,Range2).boxed().collect(Collectors.toList());
-		cboNumGuess = new JComboBox(Range.toArray());
-		
-		int FirstNum = Range.lastIndexOf(FirstNum);
-		int LastNum = Ra
-		Math.random()
-		
-		
+	public int RandomNumGen (int min, int max) {
+		int RandomNum = rdm.nextInt((max - min) + 1) + min;
+		return RandomNum;
 	}
-	
-	
-	
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnGenerate) {
-			
-			try {
-				Num1 = Integer.parseInt(txtNum1.getText());
-				Num2 = Integer.parseInt(txtNum1.getText());
-				
-				if (Num1 < Num2) {
-					RandomNumGen(Num1, Num2);
-				}
-				else {
-					JOptionPane.showMessageDialog(frmDiceGame, "The first number must be smaller than the second");
-				}
-				
-				
-			}catch (Exception e1) {
-				JOptionPane.showMessageDialog(frmDiceGame, "Please enter valid whole numbers");
-			}
-			
-			
-		}
-		
-		
-	}
-	
-	
-	
 	
 
 	/**
@@ -108,7 +68,7 @@ public class DiceGame implements ActionListener{
 	 */
 	private void initialize() {
 		frmDiceGame = new JFrame();
-		frmDiceGame.setTitle("Dice Game");
+		frmDiceGame.setTitle("Dice GameKM");
 		frmDiceGame.setBounds(100, 100, 450, 300);
 		frmDiceGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDiceGame.getContentPane().setLayout(null);
@@ -134,41 +94,86 @@ public class DiceGame implements ActionListener{
 		lblTo.setBounds(106, 37, 28, 14);
 		frmDiceGame.getContentPane().add(lblTo);
 		
-		cboNumGuess = new JComboBox();
-		cboNumGuess.setBounds(10, 100, 66, 35);
-		frmDiceGame.getContentPane().add(cboNumGuess);
-		
-		JLabel lblPickGuess = new JLabel("Pick your guess (Between range you inputted)");
+		JLabel lblPickGuess = new JLabel("Enter your guess between range you inputted)");
 		lblPickGuess.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPickGuess.setBounds(10, 67, 370, 20);
 		frmDiceGame.getContentPane().add(lblPickGuess);
 		
 		JButton btnGuess = new JButton("Guess");
+		btnGuess.addActionListener(new ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				userNumber = Integer.parseInt(txtUserGuess.getText());
+
+				try {
+					if (userNumber == RandomNumber) {	
+						lblAnswer.setVisible(true);
+						lblNumOfTimesWrong.setVisible(true);
+						lblAnswer.setText("Congratulations you got it right!");
+						lblNumOfTimesWrong.setText("You guessed wrong: " + WrongCount + " times.");
+					}
+					else if (userNumber < Num1 || userNumber > Num2) {
+						JOptionPane.showMessageDialog(frmDiceGame, "This number is out of range!");
+					}
+					else {
+						lblAnswer.setVisible(true);
+						lblAnswer.setText("Wrong number guess again!");
+						txtUserGuess.setText("");
+						WrongCount++;
+					}
+					
+					
+				}catch (Exception e1) {
+					JOptionPane.showMessageDialog(frmDiceGame, "Please enter a valid whole number within range");
+				}
+				
+				
+			}
+		});
 		btnGuess.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGuess.setBounds(106, 98, 86, 37);
-		btnGuess.addActionListener(this);
 		frmDiceGame.getContentPane().add(btnGuess);
 		
 		lblAnswer = new JLabel("Right or Wrong");
 		lblAnswer.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblAnswer.setBounds(10, 167, 370, 20);
+		lblAnswer.setVisible(false);
 		frmDiceGame.getContentPane().add(lblAnswer);
 		
 		lblNumOfTimesWrong = new JLabel("You guessed wrong: 0 times");
 		lblNumOfTimesWrong.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNumOfTimesWrong.setBounds(10, 212, 370, 20);
+		lblNumOfTimesWrong.setBounds(10, 212, 414, 20);
+		lblNumOfTimesWrong.setVisible(false);
 		frmDiceGame.getContentPane().add(lblNumOfTimesWrong);
 		
 		btnGenerate = new JButton("Generate");
+		btnGenerate.addActionListener(new ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent arg0) {
+				try {
+					Num1 = Integer.parseInt(txtNum1.getText());
+					Num2 = Integer.parseInt(txtNum2.getText());
+					
+					if (Num1 < Num2) {
+						RandomNumber = RandomNumGen(Num1, Num2);
+					}
+					else {
+						JOptionPane.showMessageDialog(frmDiceGame, "The first number must be smaller than the second");
+					}
+					
+					
+				}catch (NumberFormatException e1) {
+					JOptionPane.showMessageDialog(frmDiceGame, "Please enter valid whole numbers");
+				}
+			}
+		});
 		btnGenerate.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnGenerate.setBounds(276, 35, 89, 23);
-		btnGenerate.addActionListener(this);
 		frmDiceGame.getContentPane().add(btnGenerate);
+		
+		txtUserGuess = new JTextField();
+		txtUserGuess.setHorizontalAlignment(SwingConstants.CENTER);
+		txtUserGuess.setBounds(10, 98, 86, 37);
+		frmDiceGame.getContentPane().add(txtUserGuess);
+		txtUserGuess.setColumns(10);
 	}
 
-	@Override
-	public void actionPerformed(java.awt.event.ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }

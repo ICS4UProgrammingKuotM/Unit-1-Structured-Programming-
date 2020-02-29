@@ -16,7 +16,15 @@ import java.util.InputMismatchException;
 
 
 public class Einstein_Equation {
-
+	
+	/*
+	 * Created by: Kuot Mariak
+	 * Created on: 6-Feb-2020
+	 * Created for: ICS4U
+	 * Day #4 (Einstein's Equation)
+	 * Einstein's Equation
+	*/
+	
 	public static final class SpeedOfLight {
 		/*
 		 * This is the constant variable for the speed of light stored in a double

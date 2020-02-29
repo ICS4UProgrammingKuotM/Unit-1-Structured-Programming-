@@ -14,7 +14,15 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 public class Microwave implements ActionListener{
-
+	
+	/*
+	 * Created by: Kuot Mariak
+	 * Created on: 12-Feb-2020
+	 * Created for: ICS4U
+	 * Day #7 (MicroWave)
+	 * Microwave
+	*/
+	
 	private JFrame frmMicrowave;
 	public JLabel lblFood;
 	public JLabel lblFood1;
