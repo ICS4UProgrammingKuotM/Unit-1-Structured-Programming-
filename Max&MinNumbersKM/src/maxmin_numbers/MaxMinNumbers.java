@@ -23,6 +23,7 @@ public class MaxMinNumbers {
 	private JLabel lblMax;
 	private JTextArea txtNumbers;
 	private Random rdm = new Random();
+	
 
 	/**
 	 * Launch the application.
@@ -47,24 +48,42 @@ public class MaxMinNumbers {
 		initialize();
 	}
 	
-	public int[] GenerateNums () {
+	public List<Integer> GenerateNums () {
 		int max = 99;
 		int min = 1;
 		int size = 10;
-		int[] numbers = new int[size];
-		
-		String Listnum = "";
+
 		List<Integer> rdmNums = new ArrayList<Integer>();
 		
 		for (int i = 0; i < 10; i++) {
 			int rdmNum = (rdm.nextInt((max - min) + 1) + min);
 			rdmNums.add(rdmNum);
-			int num = rdmNums.get(i);
-			Listnum = (num + "\n");
+			txtNumbers.append(rdmNum + "\n");
 		}
 		
-		txtNumbers.setText(Listnum);
-		return numbers;
+		return rdmNums;
+	}
+	
+	public void getMin (List<Integer> array) {
+		int minValue = 99;
+		for (int i = 0; i < array.size(); i++) {
+			if (array.get(i) < minValue) {
+				minValue = array.get(i)  ;
+			}
+		}
+		
+		lblMin.setText("Min: " + minValue);
+	}
+	
+	public void getMax (List<Integer> array) {
+		int maxValue = 0;
+		for (int i = 0; i < array.size(); i++) {
+			if (array.get(i) > maxValue) {
+				maxValue = array.get(i)  ;
+			}
+		}
+		
+		lblMax.setText("Max: " + maxValue);
 	}
 
 	/**
@@ -80,7 +99,12 @@ public class MaxMinNumbers {
 		JButton btnGenerate = new JButton("Generate Numbers");
 		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GenerateNums();
+				txtNumbers.setText("");
+				lblMin.setText("");
+				lblMax.setText("");
+				List<Integer> NumArray = GenerateNums();
+				getMin(NumArray);
+				getMax(NumArray);
 			}
 		});
 		btnGenerate.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -99,6 +123,7 @@ public class MaxMinNumbers {
 		
 		txtNumbers = new JTextArea();
 		txtNumbers.setBounds(262, 11, 162, 193);
+		txtNumbers.setRows(10);
 		frmMaxMinNum.getContentPane().add(txtNumbers);
 	}
 }
